@@ -1,18 +1,23 @@
 
-div.xblock h1 {
+.xmodule_display.xmodule_HtmlModule h1 {
     font-size: 18pt;
-    font-family: 'Verdana', sans;
+    font-weight: bold;
+    font-family: 'Verdana', sans-serif;
     text-align: center;
 }
 
-div.xblock h2 {
+.xmodule_display.xmodule_HtmlModule h1 h2 {
     font-size: 16pt;
-    font-family: 'Verdana', sans;
+    font-weight: bold;
+    font-family: 'Verdana', sans-serif;
+    text-transform: initial;
+    color: black;
     text-align: center;
 }
 
-div.xblock h3 {
+.xmodule_display.xmodule_HtmlModule h1 h3 {
     font-size: 14pt;
-    font-family: 'Verdana', sans;
+    font-weight: bold;
+    font-family: 'Verdana', sans-serif;
     text-align: center;
 }
