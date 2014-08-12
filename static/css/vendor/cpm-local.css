@@ -4,20 +4,22 @@
     font-weight: bold;
     font-family: Verdana,'Source Sans','Open Sans',Geneva,sans-serif;
     text-align: center;
+    color: #2e2e2e;
 }
 
-.xmodule_display.xmodule_HtmlModule h1 h2 {
+.xmodule_display.xmodule_HtmlModule h2 {
     font-size: 16pt;
+    text-transform: initial;
     font-weight: bold;
     font-family: Verdana,'Source Sans','Open Sans',Geneva,sans-serif;
-    text-transform: initial;
-    color: black;
     text-align: center;
+    color: #2e2e2e;
 }
 
-.xmodule_display.xmodule_HtmlModule h1 h3 {
+.xmodule_display.xmodule_HtmlModule h3 {
     font-size: 14pt;
     font-weight: bold;
     font-family: Verdana,'Source Sans','Open Sans',Geneva,sans-serif;
     text-align: center;
+    color: #2e2e2e;
 }
