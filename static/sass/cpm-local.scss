@@ -1,0 +1,36 @@
+/* Let's try using SASS instead for our overrides. */
+
+/* Color from _default.scss */
+$black: #2e2e2e;
+
+.xmodule_display.xmodule_HtmlModule h1,
+.xmodule_display.xmodule_HtmlModule h2,
+.xmodule_display.xmodule_HtmlModule h3 {
+    font-weight: bold;
+    font-family: Verdana, 'Source Sans' ,'Open Sans',Geneva,sans-serif;
+    color: $black;
+    text-align: center;
+}
+
+.xmodule_display.xmodule_HtmlModule h1 {
+    font-size: 18pt;
+}
+
+.xmodule_display.xmodule_HtmlModule h2 {
+    font-size: 16pt;
+    text-transform: initial;
+}
+
+.xmodule_display.xmodule_HtmlModule h3 {
+    font-size: 14pt;
+    text-align: left;
+}
+
+.wrapper-footer {
+    font-size: 0.6em;
+    ul.olympiclinks {
+        li {
+            font-size: 0.4em;
+        }
+    }
+}
