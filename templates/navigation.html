@@ -109,6 +109,8 @@ site_status_msg = get_site_status_msg(course_id)
     </ol>
 
     <div class="right nav-courseware">
+    ## Disabling registration button.
+    % if False 
       % if not settings.FEATURES['DISABLE_LOGIN_BUTTON']:
         % if course and settings.FEATURES.get('RESTRICT_ENROLL_BY_REG_METHOD') and course.enrollment_domain:
         <div class="nav-courseware-01">
@@ -120,6 +122,7 @@ site_status_msg = get_site_status_msg(course_id)
         </div>
         % endif
       % endif
+    % endif
       <div class="nav-courseware-02">
         % if not settings.FEATURES['DISABLE_LOGIN_BUTTON']:
             % if course and settings.FEATURES.get('RESTRICT_ENROLL_BY_REG_METHOD') and course.enrollment_domain:
