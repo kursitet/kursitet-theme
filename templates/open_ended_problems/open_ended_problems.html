@@ -38,13 +38,13 @@
                 </td>
                 <td>
                 % if problem['state'] == "Currently being Graded":
-                На рассмотрении
+                РќР° СЂР°СЃСЃРјРѕС‚СЂРµРЅРёРё
                 % elif problem['state'] == "Waiting to be Graded":
-                В очереди
+                Р’ РѕС‡РµСЂРµРґРё
                 % elif problem['state'] == "Finished":
-                Готово
+                Р“РѕС‚РѕРІРѕ
                 % elif problem['state'] == "Flagged":
-                Отмечено как неуместное
+                РћС‚РјРµС‡РµРЅРѕ РєР°Рє РЅРµСѓРјРµСЃС‚РЅРѕРµ
                 % else:
                     ${problem['state']}
                 % endif
