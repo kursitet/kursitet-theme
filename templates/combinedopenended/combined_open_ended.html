@@ -14,6 +14,14 @@
                             ${_("Open Response")}
                         </div>
                     </td>
+                    <td class="assessments-container">
+                        <div class="assessment-text">
+                            ${_("Assessments:")}
+                        </div>
+                        <div class="status-container">
+                            ${status|n}
+                        </div>
+                    </td>
                 </tr>
             </table>
         </div>
@@ -49,9 +57,11 @@
         </div>
     </div>
     % if False:
+    % if is_staff:
         <div class="staff-info">
             ${_("Staff Warning: Please note that if you submit a duplicate of text that has already been submitted for grading, it will not show up in the staff grading view.  It will be given the same grade that the original received automatically, and will be returned within 30 minutes if the original is already graded, or when the original is graded if not.")}
         </div>
+    % endif
     % endif
 </section>
 
