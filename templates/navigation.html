@@ -64,7 +64,7 @@ site_status_msg = get_site_status_msg(course_id)
       <li class="primary">
         <a href="${reverse('dashboard')}" class="user-link">
           <span class="avatar"></span>
-          <span class="sr">${_("Dashboard for:")} </span> ${user.username}
+          <span class="sr">${_("Dashboard for:")} </span> ${user.email}
         </a>
       </li>
       <li class="primary">
@@ -75,7 +75,7 @@ site_status_msg = get_site_status_msg(course_id)
               <li><a href="${marketing_link('FAQ')}">${_("Help")}</a></li>
             % endif
           </%block>
-          <li><a href="https://kursitet.ru/dashboard/" role="menuitem">Курситет</a></li>
+          <li><a href="https://kursitet.ru/dashboard/" role="menuitem">Личный кабинет</a></li>
           <li><a href="${reverse('logout')}" role="menuitem">${_("Log Out")}</a></li>
         </ul>
       </li>
