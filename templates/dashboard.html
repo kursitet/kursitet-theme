@@ -1,5 +1,6 @@
 <%! from django.utils.translation import ugettext as _ %>
 <%! from django.template import RequestContext %>
+<%! import third_party_auth %>
 <%! from third_party_auth import pipeline %>
 <%! from microsite_configuration import microsite %>
 
@@ -85,14 +86,13 @@
         <li class="info--username">
           <span class="title">${_("Full Name")}</span> <span class="data" style="white-space: normal;">${ user.profile.name | h }</span>
         </li>
+        ## Mihara: Hiding email box.
         %if False:
         <li class="info--email">
           <span class="title">${_("Email")}
-        % if False
             % if external_auth_map is None or 'shib' not in external_auth_map.external_domain:
             (<a href="#change_email" rel="leanModal" class="edit-email">${_("edit")}</a>)
             % endif
-        % endif
           </span> <span class="data">${ user.email | h }</span>
         </li>
         %endif
@@ -101,7 +101,7 @@
         <%include file='dashboard/_dashboard_info_language.html' />
         %endif
 
-        % if microsite.get_value('ENABLE_THIRD_PARTY_AUTH', settings.FEATURES.get('ENABLE_THIRD_PARTY_AUTH')):
+        % if third_party_auth.is_enabled():
         <li class="controls--account">
           <span class="title">
             ## Translators: this section lists all the third-party authentication providers (for example, Google and LinkedIn) the user can link with or unlink from their edX account.
@@ -116,9 +116,9 @@
 
               <div class="status">
                 % if state.has_account:
-                <i class="icon icon-link"></i> <span class="copy">${_("Linked")}</span>
+                <i class="icon fa fa-link"></i> <span class="copy">${_("Linked")}</span>
                 % else:
-                <i class="icon icon-unlink"></i><span class="copy">${_("Not Linked")}</span>
+                <i class="icon fa fa-unlink"></i><span class="copy">${_("Not Linked")}</span>
                 % endif
               </div>
 
@@ -150,7 +150,19 @@
           </span>
         </li>
         % endif
-     % if False
+
+     ## Mihara: Hiding order history and password change.
+     % if False:
+
+        % if len(order_history_list):
+        <li class="order-history">
+          <span class="title">${_("Order History")}</span>
+          % for order_history_item in order_history_list:
+            <span><a href="${order_history_item['receipt_url']}" target="_blank" class="edit-name">${order_history_item['order_date']}</a></span>
+          % endfor
+        </li>
+        % endif
+
         % if external_auth_map is None or 'shib' not in external_auth_map.external_domain:
         <li class="controls--account">
           <span class="title"><a href="#password_reset_complete" rel="leanModal" id="pwd_reset_button">${_("Reset Password")}</a></span>
@@ -185,7 +197,9 @@
             <% show_refund_option = (course.id in show_refund_option_for) %>
             <% is_paid_course = (course.id in enrolled_courses_either_paid) %>
             <% is_course_blocked = (course.id in block_courses) %>
-            <%include file='dashboard/_dashboard_course_listing.html' args="course=course, enrollment=enrollment, show_courseware_link=show_courseware_link, cert_status=cert_status, show_email_settings=show_email_settings, course_mode_info=course_mode_info, show_refund_option = show_refund_option, is_paid_course = is_paid_course, is_course_blocked = is_course_blocked" />
+            <% course_verification_status = verification_status_by_course.get(course.id, {}) %>
+            <% course_requirements = courses_requirements_not_met.get(course.id) %>
+            <%include file='dashboard/_dashboard_course_listing.html' args="course=course, enrollment=enrollment, show_courseware_link=show_courseware_link, cert_status=cert_status, show_email_settings=show_email_settings, course_mode_info=course_mode_info, show_refund_option = show_refund_option, is_paid_course = is_paid_course, is_course_blocked = is_course_blocked, verification_status=course_verification_status, course_requirements=course_requirements" />
       % endfor
 
       </ul>
@@ -223,7 +237,7 @@
 <section id="email-settings-modal" class="modal" aria-hidden="true">
   <div class="inner-wrapper" role="dialog" aria-labelledby="email-settings-title">
     <button class="close-modal">
-      <i class="icon-remove"></i>
+      <i class="icon fa fa-remove"></i>
       <span class="sr">
         ## Translators: this is a control to allow users to exit out of this modal interface (a menu or piece of UI that takes the full focus of the screen)
         ${_("Close")}
@@ -256,7 +270,7 @@
 <section id="password_reset_complete" class="modal" aria-hidden="true">
   <div class="inner-wrapper" role="dialog" aria-labelledby="password-reset-email">
     <button class="close-modal">
-      <i class="icon-remove"></i>
+      <i class="icon fa fa-remove"></i>
       <span class="sr">
         ## Translators: this is a control to allow users to exit out of this modal interface (a menu or piece of UI that takes the full focus of the screen)
         ${_("Close")}
@@ -286,7 +300,7 @@
 <section id="change_email" class="modal" aria-hidden="true">
   <div class="inner-wrapper" role="dialog" aria-labelledby="change_email_title">
     <button class="close-modal">
-      <i class="icon-remove"></i>
+      <i class="icon fa fa-remove"></i>
       <span class="sr">
         ## Translators: this is a control to allow users to exit out of this modal interface (a menu or piece of UI that takes the full focus of the screen)
         ${_("Close")}
@@ -330,7 +344,7 @@
 <section id="apply_name_change" class="modal" aria-hidden="true">
   <div class="inner-wrapper" role="dialog" aria-labelledby="change-name-title">
     <button class="close-modal">
-      <i class="icon-remove"></i>
+      <i class="icon fa fa-remove"></i>
       <span class="sr">
         ## Translators: this is a control to allow users to exit out of this modal interface (a menu or piece of UI that takes the full focus of the screen)
         ${_("Close")}
@@ -371,9 +385,9 @@
 </section>
 
 <section id="unenroll-modal" class="modal unenroll-modal" aria-hidden="true">
-  <div class="inner-wrapper" role="alertdialog" aria-labelledy="unenrollment-modal-title">
+  <div class="inner-wrapper" role="dialog" aria-labelledby="unenrollment-modal-title">
     <button class="close-modal">
-      <i class="icon-remove"></i>
+      <i class="icon fa fa-remove"></i>
       <span class="sr">
         ## Translators: this is a control to allow users to exit out of this modal interface (a menu or piece of UI that takes the full focus of the screen)
         ${_("Close")}
@@ -382,7 +396,9 @@
 
     <header>
       <h2 id="unenrollment-modal-title">
-        ${_("<span id='track-info'></span> {course_number}?  <span id='refund-info'></span>").format(course_number="<span id='unenroll_course_number'></span>")}
+        <span id='track-info'></span>
+        <span id='unenroll_course_number'></span>?
+        <span id='refund-info'></span>
         <span class="sr">,
           ## Translators: this text gives status on if the modal interface (a menu or piece of UI that takes the full focus of the screen) is open or not
           ${_("window open")}
