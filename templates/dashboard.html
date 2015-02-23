@@ -6,6 +6,8 @@
 
 <%!
   from django.core.urlresolvers import reverse
+  # Mihara: Set the base kursitet domain here. This is different for either head and should differ in branches.
+  kursitet_base = "base-dev.kursitet.ru"
 %>
 
 <%
@@ -173,6 +175,14 @@
         </li>
         % endif
      % endif
+     ## Mihara: News iframe here. Be careful of keeping the domain correct.
+     <li>
+       <span class="title">Новости <a href="https://${ kursitet_base }/dashboard/">(подробнее)</a></span>
+       <iframe id="news-iframe" src="https://${ kursitet_base }/news/edx_endpoint/" width="100%" scrolling="no" style="border:0";></iframe>
+       <script type="text/javascript">$('#news-iframe').iFrameResize([{}]);</script>
+     </li>
+     ## News iframe ends.
+
         <%include file='dashboard/_dashboard_status_verification.html' />
 
         <%include file='dashboard/_dashboard_reverification_sidebar.html' />
