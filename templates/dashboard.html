@@ -179,7 +179,7 @@
      <li>
        <span class="title">Новости <a href="https://${ kursitet_base }/dashboard/#news">(подробнее)</a></span>
        <iframe id="news-iframe" src="https://${ kursitet_base }/news/edx_endpoint/" width="100%" scrolling="no" style="border:0; padding-top:3px;"></iframe>
-       <script type="text/javascript">$('#news-iframe').iFrameResize([{}]);</script>
+       <script type="text/javascript">$(document).ready(function() {$('#news-iframe').iFrameResize([{}]);});</script>
      </li>
      ## News iframe ends.
 
