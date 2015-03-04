@@ -5,6 +5,16 @@
 
 ## TODO: this will eventually be moved to the Sass
 <%block name="navigation_logo">
+<%
+try:
+    course_id = course.id.to_deprecated_string()
+except:
+    # can't figure out a better way to get at a possibly-defined course var
+    course_id = None
+%>
+% if course_id:
   <img src="${static.url('themes/default/images/cpm-on-edx-logo-kpk.png')}" height="50" alt="Центр педагогического мастерства" />
+% else:
+  <img src="${static.url('themes/default/images/cpm_logo_title.svg')}" height="50" style="margin-top: -2px;" alt="Центр педагогического мастерства" />
+% endif
 </%block>
-

@@ -25,14 +25,6 @@ except:
     # can't figure out a better way to get at a possibly-defined course var
     course_id = None
 site_status_msg = get_site_status_msg(course_id)
-
-if course_id:
-    logo_url = '/themes/default/images/cpm-on-edx-logo-kpk.png'
-    logo_style = ''
-else:
-    logo_url = '/themes/default/images/cpm_logo_title.svg'
-    logo_style = "margin-top: -2px;"
-
 %>
 % if site_status_msg:
 <div class="site-status">
@@ -49,7 +41,7 @@ else:
     <h1 class="logo">
       <a href="${marketing_link('ROOT')}">
         <%block name="navigation_logo">
-            <img src="${static.url(logo_url)}" height="50" style="${logo_style}" alt="${platform_name()}"/>
+            <img src="${static.url(branding.get_logo_url())}" alt="${platform_name()}"/>
         </%block>
       </a>
     </h1>
