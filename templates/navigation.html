@@ -27,10 +27,10 @@ except:
 site_status_msg = get_site_status_msg(course_id)
 
 if course_id:
-    logo_url = static.url('/themes/default/images/cpm-on-edx-logo-kpk.png')
+    logo_url = '/themes/default/images/cpm-on-edx-logo-kpk.png'
     logo_style = ''
 else:
-    logo_url = static.url('/themes/default/images/cpm_logo_title.svg')
+    logo_url = '/themes/default/images/cpm_logo_title.svg'
     logo_style = "margin-top: -2px;"
 
 %>
@@ -49,7 +49,7 @@ else:
     <h1 class="logo">
       <a href="${marketing_link('ROOT')}">
         <%block name="navigation_logo">
-            <img src="${logo_url}" height="50" style="${logo_style}" alt="${platform_name()}"/>
+            <img src="${static.url(logo_url)}" height="50" style="${logo_style}" alt="${platform_name()}"/>
         </%block>
       </a>
     </h1>
