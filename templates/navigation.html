@@ -41,8 +41,16 @@ site_status_msg = get_site_status_msg(course_id)
     <h1 class="logo">
       <a href="${marketing_link('ROOT')}">
         <%block name="navigation_logo">
+        % if False:
             <img src="${static.url(branding.get_logo_url())}" alt="${platform_name()}"/>
+        % endif
+        % if course:
+            <img src="${static.url('/themes/default/images/cpm-on-edx-logo-kpk.png')}" height="50" alt="${platform_name()}">
+        % else:
+            <img src="${static.url('/themes/default/images/cpm_logo_title.svg')}" height="50" style="margin-top: -2px;" alt="${platform_name()}">
+        % endif
         </%block>
+        %
       </a>
     </h1>
 
