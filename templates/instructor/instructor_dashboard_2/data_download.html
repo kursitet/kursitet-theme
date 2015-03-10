@@ -1,14 +1,18 @@
 <%! from django.utils.translation import ugettext as _ %>
-<%page args="section_data, course"/>
+<%page args="section_data"/>
 
 
 <div class="data-download-container action-type-container">
   <h2>${_("Data Download")}</h2>
   <div class="request-response-error msg msg-error copy" id="data-request-response-error"></div>
 
-  ## Mihara: Grade reports iframe here.
+  ## Mihara: Grade reports iframe here. Dirty dirty hack to get course id, but should be less invasive than going up the tree.
+<%
+segments = section_data['get_anon_ids_url'].split('/')
+course_id = "/".join([segments[2],segments[3],segments[4]])
+%>
   <br>
-  <iframe id="grades-iframe" src="https://${ kursitet_base }/courses/edx-panel/edx-dev/${course.id}" width="100%" scrolling="no" style="border:0;"></iframe>
+  <iframe id="grades-iframe" src="https://base-dev.kursitet.ru/courses/edx-panel/edx-dev/${course_id}" width="100%" scrolling="no" style="border:0;"></iframe>
   <script type="text/javascript">$(document).ready(function() {$('#grades-iframe').iFrameResize([{}]);});</script>
   ## Grade reports iframe ends.
 
