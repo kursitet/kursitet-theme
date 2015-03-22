@@ -11,7 +11,7 @@
 segments = section_data['get_anon_ids_url'].split('/')
 course_id = "/".join([segments[2],segments[3],segments[4]])
 %>
-  <iframe id="grades-iframe" src="https://kursitet.ru/courses/edx-panel/edx-dev/${course_id}" width="100%" scrolling="no" style="border:0;"></iframe>
+  <iframe id="grades-iframe" src="https://kursitet.ru/courses/edx-panel/edx/${course_id}" width="100%" scrolling="no" style="border:0;"></iframe>
   <script type="text/javascript">$(document).ready(function() {$('#grades-iframe').iFrameResize([{}]);});</script>
   ## Grade reports iframe ends.
 
