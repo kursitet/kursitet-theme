@@ -156,16 +156,28 @@
   % endif
 
   <section class="profile-sidebar" id="profile-sidebar" role="region" aria-label="User info">
+    ## Mihara: This looks extraneous.
+    % if False:
     <header class="profile">
       <h2 class="username-header"><span class="sr">${_("Username")}: </span><span class="username-label">${ user.email }</span></h2>
     </header>
+    % endif
     <section class="user-info">
       <ul>
+        ## Mihara: We aren't letting users do that in the first place.
+        % if False:
         <li class="heads-up">
           <span class="title">${_("Want to change your account settings?")}</span>
           <span class="copy">${_("Click the arrow next to your username above.")}</span>
         </li>
-
+        % endif
+         ## Mihara: News iframe here. Be careful of keeping the domain correct.
+         <li>
+           <span class="title">Новости <a href="https://${ kursitet_base }/dashboard/#news">(подробнее)</a></span>
+           <iframe id="news-iframe" src="https://${ kursitet_base }/news/edx_endpoint/" width="100%" scrolling="no" style="border:0; padding-top:3px;"></iframe>
+           <script type="text/javascript">$(document).ready(function() {$('#news-iframe').iFrameResize([{}]);});</script>
+         </li>
+         ## News iframe ends.        
         % if len(order_history_list):
         <li class="order-history">
           <span class="title">${_("Order History")}</span>
