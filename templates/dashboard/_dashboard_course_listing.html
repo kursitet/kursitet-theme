@@ -29,11 +29,18 @@ from student.helpers import (
   billing_email = settings.PAYMENT_SUPPORT_EMAIL
   
   ## Mihara: This prevents course access on expired courses for non-staff users.
-  # Currently broken, because course_overview is not synonymous with 'course'.
-  #from courseware.access import has_access
-  #if course_overview.has_ended() and not (has_access(user,"instructor",course_overview,course_overview.id) or has_access(user,"staff",course_overview,course_overview.id)):
-  #  show_courseware_link = False
-    
+  ## Since the template works in terms of CourseOverview now, which has no trace of access restrictions, I need to recover the actual course
+  ## and undo all the work they did to cache the data. Argh.
+  if course_overview.has_ended():
+    from xmodule.modulestore.django import modulestore
+    from courseware.access import has_access
+    store = modulestore()
+    with store.bulk_operations(course_overview.id):
+      course = store.get_course(course_id)
+      if not (has_access(user,"instructor",course,course.id) or has_access(user,"staff",course,course.id)):
+          show_courseware_link = False
+  ## End of dirty hack.
+  
 %>
 
 <%namespace name='static' file='../static_content.html'/>
