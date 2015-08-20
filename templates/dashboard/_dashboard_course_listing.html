@@ -29,9 +29,10 @@ from student.helpers import (
   billing_email = settings.PAYMENT_SUPPORT_EMAIL
   
   ## Mihara: This prevents course access on expired courses for non-staff users.
-  from courseware.access import has_access
-  if course_overview.has_ended() and not (has_access(user,"instructor",course_overview,course_overview.id) or has_access(user,"staff",course_overview,course_overview.id)):
-    show_courseware_link = False
+  # Currently broken, because course_overview is not synonymous with 'course'.
+  #from courseware.access import has_access
+  #if course_overview.has_ended() and not (has_access(user,"instructor",course_overview,course_overview.id) or has_access(user,"staff",course_overview,course_overview.id)):
+  #  show_courseware_link = False
     
 %>
 
