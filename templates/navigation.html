@@ -85,7 +85,14 @@ site_status_msg = get_site_status_msg(course_id)
           <i class="icon fa fa-home" aria-hidden="true"></i>
           <span class="sr">${_("Dashboard for:")}</span>
           <div>
-          ${user.username}
+          ## Mihara: Chain user name for dashboard button.
+          % if user.last_name and user.first_name:
+            ${user.first_name} ${user.last_name}
+          % elif user.email:
+            ${user.email}
+          % else:
+            ${user.username}
+          % endif
           </div>
         </a>
       </li>
