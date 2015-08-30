@@ -16,8 +16,6 @@ from status.status import get_site_status_msg
 
 # Mihara: Base domain here so I don't have to go fish for it next time..
 kursitet_base = "https://base-dev.kursitet.ru"
-# Mihara: Chain user name for dashboard button.
-user_display_name = u"{} {}".format(user.first_name, user.last_name) if user.last_name and user.first_name else user.email or user.username
 %>
 
 ## Provide a hook for themes to inject branding on top.
@@ -66,6 +64,9 @@ site_status_msg = get_site_status_msg(course_id)
     % endif
 
     % if user.is_authenticated():
+    ## Mihara: Chain user name for dashboard button.
+    % user_display_name = u"{} {}".format(user.first_name, user.last_name) if user.last_name and user.first_name else user.email or user.username
+
     <ol class="left nav-global authenticated">
       <%block name="navigation_global_links_authenticated">
         % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
