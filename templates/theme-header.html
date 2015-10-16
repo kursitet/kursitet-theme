@@ -5,6 +5,28 @@
 
 ## TODO: this will eventually be moved to the Sass
 <%block name="navigation_logo">
-  <img src="${static.url('themes/default/images/cpm-on-edx-logo.png')}" height="50" style="margin-top: -4px;" alt="На главную" />
-</%block>
+  <%
+  # Mihara: Switch between head templates with this. Less pain maintaining the branches.
+  shadow = True
 
+  # can't figure out a better way to get at a possibly-defined course var
+  course_id = None
+  if shadow:
+    try:
+      course_id = course.id.to_deprecated_string()
+    except:
+      pass
+  %>
+
+  % if not shadow:
+  <img src="${static.url('themes/default/images/cpm-on-edx-logo.png')}" height="50" style="margin-top: -4px;" alt="На главную" />
+  % else:
+    <%
+    %>
+    % if course_id:
+      <img src="${static.url('themes/default/images/cpm-on-edx-logo-kpk.png')}" height="50" alt="Центр педагогического мастерства" />
+    % else:
+      <img src="${static.url('themes/default/images/cpm_logo_title.svg')}" height="50" style="margin-top: -2px;" alt="Центр педагогического мастерства" />
+    % endif
+  % endif
+</%block>

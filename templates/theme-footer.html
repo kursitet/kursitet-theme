@@ -3,22 +3,34 @@
 <%namespace name='static' file='/static_content.html'/>
 <%! from datetime import datetime %>
 <%! from pytz import UTC %>
-
+<%
+shadow = False
+%>
+%if not shadow:
 <div class="wrapper-footer">
   <footer>
-    <div class="colophon">
-      <nav class="nav-footerlinks">
-        <ol>
-          <li>&#160;</li>
-          <li>&#160;</li>
-          <li>&#160;</li>
-          <li>&#160;</li>
-        </ol>
-      </nav>
-    </div>
     <div class="references">
       <span>&copy; Курситет, 2014-2015 <a href="http://mccme.ru">МЦНМО</a>.<br>Система работает на <a href="http://code.edx.org">OpenEdX</a>.</span>
     </div>
   </footer>
 </div>
+%else:
+<div class="wrapper-footer">
+  <footer>
+    <div class="colophon">
+      <nav class="nav-footerlinks">
+        <ol>
+          <li><a href="http://olimpiada.ru/">Olimpiada.ru</a></li>
+          <li><a href="http://vos.olimpiada.ru/">Всероссийская олимпиада в Москве</a></li>
+          <li><a href="http://mosolymp.olimpiada.ru/">Московская олимпиада школьников</a></li>
+          <li><a href="http://info.olimpiada.ru/calendar">Календарь олимпиад</a></li>
+        </ol>
+      </nav>
+    </div>
+    <div class="references">
+      <span>© 2013-2015 ГАОУ ДПО ЦПМ г. Москва.<br>Система работает на <a href="http://code.edx.org">OpenEdX</a>.</span>
+    </div>
+  </footer>
+</div>
+%endif
 <script type="text/javascript" src="//kursitet.ru/static/js/libs/iframeResizer.min.js"></script>
