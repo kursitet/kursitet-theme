@@ -10,7 +10,7 @@ from django.core.urlresolvers import reverse
 import json
 
 # Mihara: Set the base kursitet domain here. This is different for either head and should differ in branches.
-kursitet_base = "base-dev.kursitet.ru"
+kursitet_base = "info.edu.olimpiada.ru"
 %>
 
 <%
@@ -185,7 +185,7 @@ kursitet_base = "base-dev.kursitet.ru"
            <iframe id="news-iframe" src="https://${ kursitet_base }/news/edx_endpoint/" width="100%" scrolling="no" style="border:0; padding-top:3px;"></iframe>
            <script type="text/javascript">$(document).ready(function() {$('#news-iframe').iFrameResize([{}]);});</script>
          </li>
-         ## News iframe ends.        
+         ## News iframe ends.
 
       </ul>
     </section>
