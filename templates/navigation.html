@@ -15,7 +15,7 @@ import branding
 from status.status import get_site_status_msg
 
 # Mihara: Base domain here so I don't have to go fish for it next time..
-kursitet_base = "https://base-dev.kursitet.ru"
+kursitet_base = "https://kursitet.ru"
 %>
 
 ## Provide a hook for themes to inject branding on top.
@@ -138,7 +138,7 @@ site_status_msg = get_site_status_msg(course_id)
           </li>
         % endif
       </%block>
-    
+
     ## Mihara: Disabling registration button.
     % if False:
       % if not settings.FEATURES['DISABLE_LOGIN_BUTTON']:
