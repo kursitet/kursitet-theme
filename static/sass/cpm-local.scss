@@ -8,3 +8,19 @@
         }
     }
 }
+
+/* Extra hack for module titles. */
+
+span.module-title-span {
+    display: table-cell;
+    padding-right: 5px;
+    font-size: 85%;
+    vertical-align: middle;
+    text-align: left;
+    line-height: 1.2;
+}
+
+i.module-title-icon {
+    display: table-cell;
+    padding: 0 5px;
+}
