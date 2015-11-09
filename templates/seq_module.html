@@ -23,7 +23,7 @@
             <i class="icon fa seq_${item['type']}" aria-hidden="true"></i>
             <p><span class="sr">${item['type']}</span> ${item['title']}</p>
             ## Mihara: Show title explicitly in addition to tooltip.
-            ${item['title']}
+            <span style="overflow:hidden;">${item['title']}</span>
           </a>
         </li>
         % endfor
