@@ -20,7 +20,12 @@ span.module-title-span {
     line-height: 1.2;
 }
 
-i.module-title-icon {
+.module-title-icon {
     display: table-cell;
     padding: 0 5px;
+}
+
+div.module-title-block {
+    display: table;
+    margin: 0 auto;
 }
