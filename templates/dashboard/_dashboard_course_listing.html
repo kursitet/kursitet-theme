@@ -37,7 +37,7 @@ from student.helpers import (
     store = modulestore()
     with store.bulk_operations(course_overview.id):
       course = store.get_course(course_overview.id)
-      if not (has_access(user,"instructor",course,course.id) or has_access(user,"staff",course,course.id)):
+      if not (has_access(user,"instructor",course,course_overview.id) or has_access(user,"staff",course,course_overview.id)):
           show_courseware_link = False
   ## End of dirty hack.
   
