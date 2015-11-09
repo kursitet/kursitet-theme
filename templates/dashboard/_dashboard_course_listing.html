@@ -34,10 +34,10 @@ from student.helpers import (
   if course_overview.has_ended():
     from xmodule.modulestore.django import modulestore
     from courseware.access import has_access
-    store = modulestore()
-    with store.bulk_operations(course_overview.id):
-      course = store.get_course(course_overview.id)
-      if not (has_access(user,"instructor",course,course_overview.id) or has_access(user,"staff",course,course_overview.id)):
+    that_store = modulestore()
+    with that_store.bulk_operations(course_overview.id):
+      that_course = that_store.get_course(course_overview.id)
+      if not (has_access(user,"instructor",that_course,that_course.id) or has_access(user,"staff",that_course,that_course.id)):
           show_courseware_link = False
   ## End of dirty hack.
   
