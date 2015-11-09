@@ -11,7 +11,7 @@
         ## implementation note: will need to figure out how to handle combining detail
         ## statuses of multiple modules in js.
         <li>
-        ## Mihara: Show title explicitly in addition to tooltip.
+        ## Mihara: Show title explicitly in addition to tooltip if number of items is less than 5.
         <a class="seq_${item['type']} inactive progress-${item['progress_status']}"
            style="overflow: hidden;"
            data-id="${item['id']}"
@@ -22,11 +22,16 @@
            aria-controls="seq_contents_${idx}"
            id="tab_${idx}"
            tabindex="0">
+           % if len(item) > 5:
+            <i class="icon fa seq_${item['type']}" aria-hidden="true"></i>
+            <p><span class="sr">${item['type']}</span> ${item['title']}</p>
+           % else
            <div class="module-title-block">
             <i class="icon fa seq_${item['type']} module-title-icon" aria-hidden="true"></i>
             <span class="sr">${item['type']}</span>
             <span class="module-title-span">${item['title']}</span>
            </div>
+           % endif
           </a>
         </li>
         % endfor
