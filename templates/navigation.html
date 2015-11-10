@@ -82,7 +82,9 @@ site_status_msg = get_site_status_msg(course_id)
     </ol>
     <ol class="user">
       <li class="primary">
-        <a href="${reverse('dashboard')}" class="user-link">
+        ## Mihara: Point dashboard directly to base.
+        ## <a href="${reverse('dashboard')}" class="user-link">
+        <a href="${kursitet_base}/dashboard/" class="user-link">
           <span class="sr">${_("Dashboard for:")}</span>
           <div>
           ## Mihara: Chain user name for dashboard button.
@@ -100,13 +102,13 @@ site_status_msg = get_site_status_msg(course_id)
         <a href="#" class="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr">${_("More options dropdown")}</span><i class="fa fa-sort-desc" aria-hidden="true" style="padding-bottom: 8px;"></i></a>
         <ul class="dropdown-menu" aria-label="More Options" role="menu">
           <%block name="navigation_dropdown_menu_links" >
-            <li><a href="${reverse('dashboard')}">${_("Dashboard")}</a></li>
+          ## Mihara: Remove self-reference to edx dashboard.
+          ## <li><a href="${reverse('dashboard')}">${_("Dashboard")}</a></li>
           ## Mihara: Don't know what it's for but I'm pretty sure we don't want it.
           % if False:
             <li><a href="${reverse('learner_profile', kwargs={'username': user.username})}">${_("Profile")}</a></li>
             <li><a href="${reverse('account_settings')}">${_("Account")}</a></li>
           % endif
-          <li><a href="${kursitet_base}/dashboard/" role="menuitem">Личный кабинет</a></li>
           </%block>
           <li><a href="${reverse('logout')}" role="menuitem">${_("Sign Out")}</a></li>
         </ul>
