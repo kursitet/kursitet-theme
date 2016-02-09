@@ -9,6 +9,12 @@
     }
 }
 
+/* Extra hack to fix course UI column width */
+
+div.course-index {
+    width: 250px;
+}
+
 /* Extra hack for module titles. */
 
 span.module-title-span {
