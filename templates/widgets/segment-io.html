@@ -1,0 +1,18 @@
+## mako
+
+<%namespace name='static' file='/static_content.html'/>
+<link rel="stylesheet" href="${static.url('themes/default/sass/cpm-local.css')}" />
+
+## Mihara:
+## We're not actually using segment.io, so we can exploit this file to actually get our css into head rather than body.
+
+<!-- dummy Segment -->
+<script type="text/javascript">
+  var analytics = {
+    track: function() { return; },
+    trackLink: function() { return; },
+    pageview: function() { return; },
+    page: function() { return; }
+  };
+</script>
+<!-- end dummy Segment -->
