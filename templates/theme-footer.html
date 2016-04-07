@@ -4,7 +4,13 @@
 <%! from datetime import datetime %>
 <%! from pytz import UTC %>
 <%
-shadow = False
+
+# Mihara: Determine head template based on marketing link ROOT.
+if marketing_link('ROOT') in ["https://base-dev.kursitet.ru/", "https://kursitet.ru/"]:
+  shadow = False
+else:
+  shadow = True
+
 %>
 %if not shadow:
 <div class="wrapper-footer">

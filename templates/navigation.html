@@ -14,8 +14,6 @@ import branding
 # app that handles site status messages
 from status.status import get_site_status_msg
 
-# Mihara: Base domain here so I don't have to go fish for it next time..
-kursitet_base = "https://base-dev.kursitet.ru"
 %>
 
 ## Provide a hook for themes to inject branding on top.
@@ -83,7 +81,7 @@ site_status_msg = get_site_status_msg(course_id)
       <li class="primary">
         ## Mihara: Point dashboard directly to base.
         ## <a href="${reverse('dashboard')}" class="user-link">
-        <a href="${kursitet_base}/dashboard/" class="user-link">
+        <a href="${marketing_link('ROOT')}dashboard/" class="user-link">
           <span class="sr">${_("Dashboard for:")}</span>
           <div>
           ## Mihara: Chain user name for dashboard button.

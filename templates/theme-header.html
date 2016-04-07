@@ -6,8 +6,12 @@
 ## TODO: this will eventually be moved to the Sass
 <%block name="navigation_logo">
   <%
-  # Mihara: Switch between head templates with this. Less pain maintaining the branches.
-  shadow = False
+
+  # Mihara: Determine head template based on marketing link ROOT.
+  if marketing_link('ROOT') in ["https://base-dev.kursitet.ru/", "https://kursitet.ru/"]:
+    shadow = False
+  else:
+    shadow = True
 
   # can't figure out a better way to get at a possibly-defined course var
   course_id = None
