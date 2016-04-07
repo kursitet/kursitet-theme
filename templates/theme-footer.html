@@ -11,12 +11,15 @@ if marketing_link('ROOT') in ["https://base-dev.kursitet.ru/", "https://kursitet
 else:
   shadow = True
 
+# Autocompute date.
+from datetime import date
+
 %>
 %if not shadow:
 <div class="wrapper-footer">
   <footer>
     <div class="references">
-      <span>&copy; Курситет, 2014-2016 <a href="http://mccme.ru">МЦНМО</a>.<br>Система работает на <a href="http://code.edx.org">OpenEdX</a>.</span>
+      <span>&copy; Курситет, 2014-${date.today().year} <a href="http://mccme.ru">МЦНМО</a>.<br>Система работает на <a href="http://code.edx.org">OpenEdX</a>.</span>
     </div>
   </footer>
 </div>
@@ -34,7 +37,7 @@ else:
       </nav>
     </div>
     <div class="references">
-      <span>© 2013-2016 ГАОУ ДПО ЦПМ г. Москва.<br>Система работает на <a href="http://code.edx.org">OpenEdX</a>.</span>
+      <span>© 2013-${date.today().year} ГАОУ ДПО ЦПМ г. Москва.<br>Система работает на <a href="http://code.edx.org">OpenEdX</a>.</span>
     </div>
   </footer>
 </div>
