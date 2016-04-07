@@ -2,15 +2,6 @@
 
 <%namespace name='static' file='/static_content.html'/>
 <link rel="stylesheet" href="${static.url('themes/default/sass/cpm-local.css')}" />
-<script type="text-javascript" src="${static.url('themes/default/js/datepicker-ru.js')}" />
-<script type="text-javascript">
-$.datepicker.setDefaults(
-  $.extend(
-    {'dateFormat':'yy-mm-dd'},
-    $.datepicker.regional['ru']
-  )
-);
-</script>
 
 ## Mihara:
 ## We're not actually using segment.io, so we can exploit this file to actually get our css into head rather than body.
