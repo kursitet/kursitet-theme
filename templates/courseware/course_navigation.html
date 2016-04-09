@@ -91,13 +91,15 @@ include_special_exams = settings.FEATURES.get('ENABLE_SPECIAL_EXAMS', False) and
                 continue
             # Also, hot patch the name of the tab for "info"
             if tab.type == "info":
-                tab.name = "Новости"
-                    
+                tab_name_str = "Новости"
+            else:
+                tab_name_str = tab.name
+
             tab_is_active = (tab.tab_id == active_page) or (tab.tab_id == default_tab)
         %>
           <li>
              <a href="${tab.link_func(course, reverse) | h}" class="${url_class(tab_is_active)}">
-                 ${_(tab.name) | h}
+                 ${_(tab_name_str) | h}
                  % if tab_is_active:
                    <span class="sr">, current location</span>
                  %endif
