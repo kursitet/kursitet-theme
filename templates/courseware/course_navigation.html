@@ -89,6 +89,9 @@ include_special_exams = settings.FEATURES.get('ENABLE_SPECIAL_EXAMS', False) and
             # Mihara: Never display the stock discussion tab.
             if tab.type == "discussion":
                 continue
+            # Also, hot patch the name of the tab for "info"
+            if tab.type == "info":
+                tab.name = "Новости"
                     
             tab_is_active = (tab.tab_id == active_page) or (tab.tab_id == default_tab)
         %>
