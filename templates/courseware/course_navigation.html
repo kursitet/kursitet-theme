@@ -90,8 +90,8 @@ include_special_exams = settings.FEATURES.get('ENABLE_SPECIAL_EXAMS', False) and
             if tab.type == "discussion":
                 continue
             # Also, hot patch the name of the tab for "info"
-            if tab.type == "info":
-                tab_name_str = "Новости"
+            if tab.type == "course_info":
+                tab_name_str = "Новости курса"
             else:
                 tab_name_str = tab.name
 
