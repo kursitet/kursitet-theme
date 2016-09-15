@@ -30,7 +30,8 @@
         </tr>
         % endif
         <tr>
-          <td>Сколько слушателей посещает курс:</td><td>${modes['honor']}</td>
+          <td>Сколько слушателей посещает курс:</td>
+          <td>${modes['audit'] + modes['honor'] + modes['verified'] + modes['professional'] + modes['no-id-professional']}</td>
         </tr>
         ## Done.
       </table>
