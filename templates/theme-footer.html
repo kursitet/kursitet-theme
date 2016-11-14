@@ -27,14 +27,26 @@ from datetime import date
 <div class="wrapper-footer">
   <footer>
     <div class="colophon">
-      <nav class="nav-footerlinks">
-        <ol>
-          <li><a href="http://olimpiada.ru/">Olimpiada.ru</a></li>
-          <li><a href="http://vos.olimpiada.ru/">Всероссийская олимпиада в Москве</a></li>
-          <li><a href="http://mosolymp.olimpiada.ru/">Московская олимпиада школьников</a></li>
-          <li><a href="http://info.olimpiada.ru/calendar">Календарь олимпиад</a></li>
-        </ol>
-      </nav>
+
+<nav class="nav-footerlinks" style="text-align: center;">
+
+  <a href="http://olimpiada.ru/">
+    <img src="${static.url('themes/default/images/logo_info.png')}" title="Olimpiada.ru" style="padding:10px;">
+  </a>
+
+  <a href="http://vos.olimpiada.ru/">
+    <img src="${static.url('themes/default/images/banner_vos.jpg')}" title="Всероссийская олимпиада в Москве" style="padding:10px;">
+  </a>
+
+  <a href="http://mos.olimpiada.ru/">
+    <img src="${static.url('themes/default/images/banner_mos.jpg')}" title="Московская олимпиада школьников" style="padding:10px;">
+  </a>
+
+    <a href="http://info.olimpiada.ru/calendar">
+    <img src="${static.url('themes/default/images/info-calendar.jpg')}" title="Календарь олимпиад" style="padding:10px;">
+  </a>
+</nav>
+
     </div>
     <div class="references">
       <span>© 2013-${date.today().year} ГАОУ ДПО ЦПМ г. Москва.<br>Система работает на <a href="http://code.edx.org">OpenEdX</a>.</span>
