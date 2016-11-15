@@ -7,6 +7,8 @@
 <%block name="navigation_logo">
   <%
 
+  from django.conf import settings
+
   # Mihara: can't figure out a better way to get at a possibly-defined course var
   course_id = None
   if shadow:
@@ -16,15 +18,15 @@
       pass
   %>
 
-  % if not marketing_link('WIDE_LOGO'):
-  <img src="${static.url(marketing_link('BOX_LOGO'))}" height="50" style="${marketing_link('BOX_LOGO_STYLE')}" alt="На главную" />
+  % if not settings.MKTG_URLS.get('WIDE_LOGO'):
+  <img src="${settings.MKTG_URLS.get('BOX_LOGO')}" height="50" style="${settings.MKTG_URLS.get('BOX_LOGO_STYLE')}" alt="На главную" />
   % else:
     <%
     %>
     % if course_id:
-      <img src="${static.url(marketing_link('BOX_LOGO')}" height="50" style="${marketing_link('BOX_LOGO_STYLE)}" alt="${marketing_link('LOGO_ALT')}" />
+      <img src="${static.url(settings.MKTG_URLS.get('BOX_LOGO'))}" height="50" style="${settings.MKTG_URLS.get('BOX_LOGO_STYLE')}" alt="${settings.MKTG_URLS.get('LOGO_ALT')}" />
     % else:
-      <img src="${static.url(marketing_link('WIDE_LOGO'))}" height="50" style="${marketing_link('WIDE_LOGO_STYLE')}" alt="${marketing_link('LOGO_ALT')}" />
+      <img src="${static.url(settings.MKTG_URLS.get('WIDE_LOGO'))}" height="50" style="${settings.MKTG_URLS.get('WIDE_LOGO_STYLE')}" alt="${settings.MKTG_URLS.get('LOGO_ALT')}" />
     % endif
   % endif
 </%block>

@@ -7,16 +7,17 @@
 
 # Autocompute date.
 from datetime import date
+from django.conf import settings
 
-if date.today().year > marketing_link('STARTYEAR'):
-  dateline = "{}-{}".format(marketing_link('STARTYEAR'),date.today().year())
+if date.today().year > settings.MKTG_URLS.get('STARTYEAR'):
+  dateline = "{}-{}".format(settings.MKTG_URLS.get('STARTYEAT'),date.today().year)
 else:
-  dateline = date.today().year()
+  dateline = "{}".format(date.today().year)
 
 %>
 <div class="wrapper-footer">
   <footer>
-%if marketing_link('COLOPHON'):
+%if settings.MKTG_URLS.get('COLOPHON'):
     <div class="colophon">
 <nav class="nav-footerlinks" style="text-align: center;">
 
@@ -40,7 +41,7 @@ else:
 %endif
 
     <div class="references">
-      <span>&copy; ${dateline} ${marketing_link('COPYRIGHT_OWNER') | n}
+      <span>&copy; ${dateline} ${settings.MKTG_URLS.get('COPYRIGHT_OWNER') | n}
       <br>Система работает на <a href="http://code.edx.org">OpenEdX</a>.</span>
     </div>
   </footer>
