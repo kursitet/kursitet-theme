@@ -9,8 +9,10 @@
 from datetime import date
 from django.conf import settings
 
-if date.today().year > settings.MKTG_URLS.get('STARTYEAR'):
-  dateline = "{}-{}".format(settings.MKTG_URLS.get('STARTYEAT'),date.today().year)
+startyear = int(settings.MKTG_URLS.get('STARTYEAR',date.today().year))
+
+if date.today().year > startyear:
+  dateline = "{}-{}".format(startyear,date.today().year)
 else:
   dateline = "{}".format(date.today().year)
 
