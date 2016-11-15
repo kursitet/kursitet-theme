@@ -7,13 +7,7 @@
 <%block name="navigation_logo">
   <%
 
-  # Mihara: Determine head template based on marketing link ROOT.
-  if marketing_link('ROOT') in ["https://base-dev.kursitet.ru/", "https://kursitet.ru/"]:
-    shadow = False
-  else:
-    shadow = True
-
-  # can't figure out a better way to get at a possibly-defined course var
+  # Mihara: can't figure out a better way to get at a possibly-defined course var
   course_id = None
   if shadow:
     try:
@@ -22,15 +16,15 @@
       pass
   %>
 
-  % if not shadow:
-  <img src="${static.url('themes/default/images/cpm-on-edx-logo.png')}" height="50" style="margin-top: -4px;" alt="На главную" />
+  % if not marketing_link('WIDE_LOGO'):
+  <img src="${static.url(marketing_link('BOX_LOGO'))}" height="50" style="${marketing_link('BOX_LOGO_STYLE')}" alt="На главную" />
   % else:
     <%
     %>
     % if course_id:
-      <img src="${static.url('themes/default/images/cpm-on-edx-logo-kpk.png')}" height="50" alt="Центр педагогического мастерства" />
+      <img src="${static.url(marketing_link('BOX_LOGO')}" height="50" style="${marketing_link('BOX_LOGO_STYLE)}" alt="${marketing_link('LOGO_ALT')}" />
     % else:
-      <img src="${static.url('themes/default/images/cpm_logo_title.svg')}" height="50" style="margin-top: -2px;" alt="Центр педагогического мастерства" />
+      <img src="${static.url(marketing_link('WIDE_LOGO'))}" height="50" style="${marketing_link('WIDE_LOGO_STYLE')}" alt="${marketing_link('LOGO_ALT')}" />
     % endif
   % endif
 </%block>

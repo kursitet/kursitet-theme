@@ -5,29 +5,19 @@
 <%! from pytz import UTC %>
 <%
 
-# Mihara: Determine head template based on marketing link ROOT.
-if marketing_link('ROOT') in ["https://base-dev.kursitet.ru/", "https://kursitet.ru/"]:
-  shadow = False
-else:
-  shadow = True
-
 # Autocompute date.
 from datetime import date
 
-%>
-%if not shadow:
-<div class="wrapper-footer">
-  <footer>
-    <div class="references">
-      <span>&copy; Курситет, 2014-${date.today().year} <a href="http://mccme.ru">МЦНМО</a>.<br>Система работает на <a href="http://code.edx.org">OpenEdX</a>.</span>
-    </div>
-  </footer>
-</div>
-%else:
-<div class="wrapper-footer">
-  <footer>
-    <div class="colophon">
+if date.today().year > marketing_link('STARTYEAR'):
+  dateline = "{}-{}".format(marketing_link('STARTYEAR'),date.today().year())
+else:
+  dateline = date.today().year()
 
+%>
+<div class="wrapper-footer">
+  <footer>
+%if marketing_link('COLOPHON'):
+    <div class="colophon">
 <nav class="nav-footerlinks" style="text-align: center;">
 
   <a href="http://olimpiada.ru/">
@@ -46,12 +36,13 @@ from datetime import date
     <img src="${static.url('themes/default/images/info-calendar.jpg')}" title="Календарь олимпиад" style="padding:10px;">
   </a>
 </nav>
-
     </div>
+%endif
+
     <div class="references">
-      <span>© 2013-${date.today().year} ГАОУ ДПО ЦПМ г. Москва.<br>Система работает на <a href="http://code.edx.org">OpenEdX</a>.</span>
+      <span>&copy; ${dateline} ${marketing_link('COPYRIGHT_OWNER') | n}
+      <br>Система работает на <a href="http://code.edx.org">OpenEdX</a>.</span>
     </div>
   </footer>
 </div>
-%endif
-<script type="text/javascript" src="//kursitet.ru/static/js/libs/iframeResizer.min.js"></script>
+<script type="text/javascript" src="${marketing_link('ROOT')}/static/js/libs/iframeResizer.min.js"></script>
