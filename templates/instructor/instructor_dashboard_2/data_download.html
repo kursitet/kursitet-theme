@@ -1,12 +1,10 @@
 <%! from django.utils.translation import ugettext as _ %>
 <%page args="section_data"/>
 <%
-# Mihara: Derive platform name from base domain:
-platform_name = {
-  "https://base-dev.kursitet.ru/": "edx-dev",
-  "https://kursitet.ru/": "edx",
-  "https://edu.olimpiada.ru/": "kpk"
-}[marketing_link('ROOT')]
+# Mihara: Get platform name from settings.
+
+from django.conf import settings
+platform_name = settings.MKTG_URLS.get('KURSITET_PLATFORM_NAME')
 
 %>
 
