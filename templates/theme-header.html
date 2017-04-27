@@ -11,7 +11,7 @@
 
   # Mihara: can't figure out a better way to get at a possibly-defined course var
   course_id = None
-  if shadow:
+  if settings.MKTG_URLS.get('WIDE_LOGO'):
     try:
       course_id = course.id.to_deprecated_string()
     except:
